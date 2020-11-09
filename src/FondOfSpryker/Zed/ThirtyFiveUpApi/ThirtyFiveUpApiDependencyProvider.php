@@ -33,7 +33,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param  \Spryker\Zed\Kernel\Container  $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
@@ -46,7 +46,6 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
-
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container

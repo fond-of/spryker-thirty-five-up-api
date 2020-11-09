@@ -28,7 +28,8 @@ class ThirtyFiveUpApiPersistenceFactory extends AbstractPersistenceFactory
     /**
      * @return \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\Propel\Mapper\TransferMapperInterface]
      */
-    public function createTransferMapper(): TransferMapperInterface{
+    public function createTransferMapper(): TransferMapperInterface
+    {
         return new TransferMapper();
     }
 

@@ -3,12 +3,11 @@
 namespace FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\Propel\Mapper;
 
 use Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer;
-use Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer;
 
 class TransferMapper implements TransferMapperInterface
 {
     /**
-     * @param  array  $data
+     * @param array $data
      *
      * @return \Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer
      */
@@ -21,7 +20,7 @@ class TransferMapper implements TransferMapperInterface
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      *
      * @return \Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer[]
      */

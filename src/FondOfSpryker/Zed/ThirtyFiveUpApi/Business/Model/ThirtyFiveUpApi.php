@@ -32,11 +32,9 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     protected $repository;
 
     /**
-     * ThirtyFiveUpApi constructor.
-     *
-     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface  $apiQueryContainer
-     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface  $thirtyFiveUpFacade
-     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface  $repository
+     * @param \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface $apiQueryContainer
+     * @param \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface $thirtyFiveUpFacade
+     * @param \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface $repository
      */
     public function __construct(
         ThirtyFiveUpApiToApiQueryContainerInterface $apiQueryContainer,
@@ -49,12 +47,12 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     }
 
     /**
-     * @param  int  $idThirtyFiveUpOrder
-     * @param  \Generated\Shared\Transfer\ApiDataTransfer  $apiDataTransfer
+     * @param int $idThirtyFiveUpOrder
+     * @param \Generated\Shared\Transfer\ApiDataTransfer $apiDataTransfer
      *
-     * @return \Generated\Shared\Transfer\ApiItemTransfer
      * @throws \Spryker\Zed\Api\Business\Exception\EntityNotSavedException
      *
+     * @return \Generated\Shared\Transfer\ApiItemTransfer
      */
     public function update(int $idThirtyFiveUpOrder, ApiDataTransfer $apiDataTransfer): ApiItemTransfer
     {
@@ -62,8 +60,7 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
 
         try {
             $thirtyFiveUpOrderTransfer = $this->thirtyFiveUpFacade->updateThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
-        }
-        catch (Exception $exception){
+        } catch (Exception $exception) {
             throw new EntityNotSavedException(
                 sprintf('Could not update thirty five up order with id %s', $idThirtyFiveUpOrder),
                 ApiConfig::HTTP_CODE_INTERNAL_ERROR,
@@ -78,7 +75,7 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     }
 
     /**
-     * @param  \Generated\Shared\Transfer\ApiRequestTransfer  $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\ApiCollectionTransfer
      */
@@ -88,7 +85,7 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      *
      * @return \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer
      */

@@ -2,12 +2,8 @@
 
 namespace FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer;
 
-use Generated\Shared\Transfer\ApiCollectionTransfer;
-use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiQueryBuilderQueryTransfer;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
-use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Zed\Api\Persistence\ApiQueryContainerInterface;
 use Spryker\Zed\ApiQueryBuilder\Persistence\ApiQueryBuilderQueryContainerInterface;
 
 class ThirtyFiveUpApiToApiQueryBuilderContainerBridge implements ThirtyFiveUpApiToApiQueryBuilderContainerInterface
@@ -18,9 +14,7 @@ class ThirtyFiveUpApiToApiQueryBuilderContainerBridge implements ThirtyFiveUpApi
     protected $apiQueryBuilderQueryContainer;
 
     /**
-     * ThirtyFiveUpApiToApiQueryBuilderContainerBridge constructor.
-     *
-     * @param  \Spryker\Zed\ApiQueryBuilder\Persistence\ApiQueryBuilderQueryContainerInterface  $apiQueryBuilderQueryContainer
+     * @param \Spryker\Zed\ApiQueryBuilder\Persistence\ApiQueryBuilderQueryContainerInterface $apiQueryBuilderQueryContainer
      */
     public function __construct(ApiQueryBuilderQueryContainerInterface $apiQueryBuilderQueryContainer)
     {
@@ -28,8 +22,8 @@ class ThirtyFiveUpApiToApiQueryBuilderContainerBridge implements ThirtyFiveUpApi
     }
 
     /**
-     * @param  \Propel\Runtime\ActiveQuery\ModelCriteria  $query
-     * @param  \Generated\Shared\Transfer\ApiQueryBuilderQueryTransfer  $apiQueryBuilderQueryTransfer
+     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
+     * @param \Generated\Shared\Transfer\ApiQueryBuilderQueryTransfer $apiQueryBuilderQueryTransfer
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
      */

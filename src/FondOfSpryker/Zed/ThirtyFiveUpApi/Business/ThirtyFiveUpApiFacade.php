@@ -14,6 +14,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  * @package FondOfSpryker\Zed\ThirtyFiveUpApi\Business
  *
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\ThirtyFiveUpApiBusinessFactory getFactory()
+ * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface getRepository()
  */
 class ThirtyFiveUpApiFacade extends AbstractFacade implements ThirtyFiveUpApiFacadeInterface
 {

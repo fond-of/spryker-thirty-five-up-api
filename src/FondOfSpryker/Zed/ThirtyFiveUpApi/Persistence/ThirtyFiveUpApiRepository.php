@@ -12,7 +12,6 @@ use Generated\Shared\Transfer\ApiRequestTransfer;
 use Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer;
 use Generated\Shared\Transfer\PropelQueryBuilderColumnSelectionTransfer;
 use Generated\Shared\Transfer\PropelQueryBuilderColumnTransfer;
-use Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer;
 use Orm\Zed\ThirtyFiveUp\Persistence\Map\ThirtyFiveUpOrderTableMap;
 use Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -59,17 +58,17 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
     }
 
     /**
-     * @param  \Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer  $orderEntityTransfer
+     * @param \Generated\Shared\Transfer\FosThirtyFiveUpOrderEntityTransfer $orderEntityTransfer
+     *
+     * @throws \FondOfSpryker\Zed\ThirtyFiveUp\Exception\ThirtyFiveUpOrderNotFoundException
      *
      * @return \Generated\Shared\Transfer\ApiItemTransfer
-     * @throws \FondOfSpryker\Zed\ThirtyFiveUp\Exception\ThirtyFiveUpOrderNotFoundException
-     * @throws \Propel\Runtime\Exception\PropelException
      */
     public function convert(FosThirtyFiveUpOrderEntityTransfer $orderEntityTransfer): ApiItemTransfer
     {
         $orderTransfer = $this->getFactory()->getThirtyFiveUpFacade()->findThirtyFiveUpOrderById($orderEntityTransfer->getIdThirtyFiveUpOrder());
 
-        if ($orderTransfer === null){
+        if ($orderTransfer === null) {
             throw new ThirtyFiveUpOrderNotFoundException(sprintf('Order with ID %s not found!'), $orderEntityTransfer->getIdThirtyFiveUpOrder());
         }
 
@@ -132,10 +131,9 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
     }
 
     /**
-     * @param  \Generated\Shared\Transfer\ApiRequestTransfer  $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
      * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     * @throws \Propel\Runtime\Exception\PropelException
      */
     protected function buildQuery(ApiRequestTransfer $apiRequestTransfer)
     {
@@ -148,10 +146,9 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
     }
 
     /**
-     * @param  \Generated\Shared\Transfer\ApiRequestTransfer  $apiRequestTransfer
+     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\ApiQueryBuilderQueryTransfer
-     * @throws \Propel\Runtime\Exception\PropelException
      */
     protected function buildApiQueryBuilderQuery(ApiRequestTransfer $apiRequestTransfer)
     {
@@ -166,7 +163,6 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
 
     /**
      * @return \Generated\Shared\Transfer\PropelQueryBuilderColumnSelectionTransfer
-     * @throws \Propel\Runtime\Exception\PropelException
      */
     protected function buildColumnSelection(): PropelQueryBuilderColumnSelectionTransfer
     {
