@@ -4,6 +4,7 @@ namespace FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model;
 
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface;
+use FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface;
 use Generated\Shared\Transfer\ApiCollectionTransfer;
 use Generated\Shared\Transfer\ApiDataTransfer;
 use Generated\Shared\Transfer\ApiItemTransfer;
@@ -25,24 +26,34 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     protected $thirtyFiveUpFacade;
 
     /**
-     * @param \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface $apiQueryContainer
-     * @param \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface $thirtyFiveUpFacade
+     * @var \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface
+     */
+    protected $repository;
+
+    /**
+     * ThirtyFiveUpApi constructor.
+     *
+     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface  $apiQueryContainer
+     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface  $thirtyFiveUpFacade
+     * @param  \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface  $repository
      */
     public function __construct(
         ThirtyFiveUpApiToApiQueryContainerInterface $apiQueryContainer,
-        ThirtyFiveUpApiToThirtyFiveUpFacadeInterface $thirtyFiveUpFacade
+        ThirtyFiveUpApiToThirtyFiveUpFacadeInterface $thirtyFiveUpFacade,
+        ThirtyFiveUpApiRepositoryInterface $repository
     ) {
         $this->apiQueryContainer = $apiQueryContainer;
         $this->thirtyFiveUpFacade = $thirtyFiveUpFacade;
+        $this->repository = $repository;
     }
 
     /**
-     * @param int $idThirtyFiveUpOrder
-     * @param \Generated\Shared\Transfer\ApiDataTransfer $apiDataTransfer
-     *
-     * @throws \Spryker\Zed\Api\Business\Exception\EntityNotSavedException
+     * @param  int  $idThirtyFiveUpOrder
+     * @param  \Generated\Shared\Transfer\ApiDataTransfer  $apiDataTransfer
      *
      * @return \Generated\Shared\Transfer\ApiItemTransfer
+     * @throws \Spryker\Zed\Api\Business\Exception\EntityNotSavedException
+     *
      */
     public function update(int $idThirtyFiveUpOrder, ApiDataTransfer $apiDataTransfer): ApiItemTransfer
     {
@@ -70,36 +81,17 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
-     *
-     * @throws \Spryker\Zed\Api\Business\Exception\EntityNotSavedException
+     * @param  \Generated\Shared\Transfer\ApiRequestTransfer  $apiRequestTransfer
      *
      * @return \Generated\Shared\Transfer\ApiCollectionTransfer
      */
     public function find(ApiRequestTransfer $apiRequestTransfer): ApiCollectionTransfer
     {
-        $thirtyFiveUpOrderTransfer = $this->createThirtyFiveUpOrderTransfer($apiRequestTransfer->getRequestData());
-
-        $response = $this->thirtyFiveUpFacade->findThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
-
-        if ($response->getCode() !== 200) {
-            throw new EntityNotSavedException(
-                sprintf('Could not update thirty five up order with id %s', $idThirtyFiveUpOrder),
-                ApiConfig::HTTP_CODE_INTERNAL_ERROR
-            );
-        }
-
-        $data = [];
-        $orders = $response->getOrders();
-        if ($orders->count() > 0) {
-            $data = $orders->getArrayCopy();
-        }
-
-        return $this->apiQueryContainer->createApiCollection($data);
+        return $this->repository->find($apiRequestTransfer);
     }
 
     /**
-     * @param array $data
+     * @param  array  $data
      *
      * @return \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer
      */

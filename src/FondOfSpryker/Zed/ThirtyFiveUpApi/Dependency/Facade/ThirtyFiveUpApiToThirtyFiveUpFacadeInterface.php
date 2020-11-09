@@ -15,9 +15,11 @@ interface ThirtyFiveUpApiToThirtyFiveUpFacadeInterface
     public function updateThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpResponseTransfer;
 
     /**
-     * @param \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer
+     * @param int $id
      *
-     * @return \Generated\Shared\Transfer\ThirtyFiveUpResponseTransfer
+     * @throws \Propel\Runtime\Exception\PropelException
+     *
+     * @return \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer|null
      */
-    public function findThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpResponseTransfer;
+    public function findThirtyFiveUpOrderById(int $id): ?ThirtyFiveUpOrderTransfer;
 }

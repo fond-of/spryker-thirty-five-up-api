@@ -32,12 +32,14 @@ class ThirtyFiveUpApiToThirtyFiveUpFacadeBridge implements ThirtyFiveUpApiToThir
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer
+     * @param int $id
      *
-     * @return \Generated\Shared\Transfer\ThirtyFiveUpResponseTransfer
+     * @throws \Propel\Runtime\Exception\PropelException
+     *
+     * @return \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer|null
      */
-    public function findThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpResponseTransfer
+    public function findThirtyFiveUpOrderById(int $id): ?ThirtyFiveUpOrderTransfer
     {
-        return $this->facade->findThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
+        return $this->facade->findThirtyFiveUpOrderById($id);
     }
 }
