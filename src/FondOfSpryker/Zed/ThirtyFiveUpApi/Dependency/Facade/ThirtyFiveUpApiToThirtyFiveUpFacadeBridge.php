@@ -22,11 +22,13 @@ class ThirtyFiveUpApiToThirtyFiveUpFacadeBridge implements ThirtyFiveUpApiToThir
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer
+     * @param  \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer  $thirtyFiveUpOrderTransfer
      *
-     * @return \Generated\Shared\Transfer\ThirtyFiveUpResponseTransfer
+     * @return \Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer
+     * @throws \Propel\Runtime\Exception\PropelException
+     * @throws \Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException
      */
-    public function updateThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpResponseTransfer
+    public function updateThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpOrderTransfer
     {
         return $this->facade->updateThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
     }

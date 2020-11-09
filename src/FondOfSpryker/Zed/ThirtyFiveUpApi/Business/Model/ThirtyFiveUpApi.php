@@ -2,6 +2,7 @@
 
 namespace FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model;
 
+use Exception;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface;
@@ -59,18 +60,14 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     {
         $thirtyFiveUpOrderTransfer = $this->createThirtyFiveUpOrderTransfer($apiDataTransfer->getData());
 
-        $response = $this->thirtyFiveUpFacade->updateThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
-
-        $orders = $response->getOrders();
-        $thirtyFiveUpOrderTransfer = null;
-        if ($orders->count() === 1) {
-            $thirtyFiveUpOrderTransfer = $orders->getArrayCopy()[0];
+        try {
+            $thirtyFiveUpOrderTransfer = $this->thirtyFiveUpFacade->updateThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
         }
-
-        if ($response->getCode() !== 200 || $thirtyFiveUpOrderTransfer === null) {
+        catch (Exception $exception){
             throw new EntityNotSavedException(
                 sprintf('Could not update thirty five up order with id %s', $idThirtyFiveUpOrder),
-                ApiConfig::HTTP_CODE_INTERNAL_ERROR
+                ApiConfig::HTTP_CODE_INTERNAL_ERROR,
+                $exception
             );
         }
 
