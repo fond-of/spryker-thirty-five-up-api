@@ -38,6 +38,6 @@ class ThirtyFiveUpApiToThirtyFiveUpFacadeBridge implements ThirtyFiveUpApiToThir
      */
     public function findThirtyFiveUpOrder(ThirtyFiveUpOrderTransfer $thirtyFiveUpOrderTransfer): ThirtyFiveUpResponseTransfer
     {
-        return $this->findThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
+        return $this->facade->findThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
     }
 }

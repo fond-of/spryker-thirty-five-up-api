@@ -80,7 +80,7 @@ class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
     {
         $thirtyFiveUpOrderTransfer = $this->createThirtyFiveUpOrderTransfer($apiRequestTransfer->getRequestData());
 
-        $response = $this->thirtyFiveUpFacade->updateThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
+        $response = $this->thirtyFiveUpFacade->findThirtyFiveUpOrder($thirtyFiveUpOrderTransfer);
 
         if ($response->getCode() !== 200) {
             throw new EntityNotSavedException(
