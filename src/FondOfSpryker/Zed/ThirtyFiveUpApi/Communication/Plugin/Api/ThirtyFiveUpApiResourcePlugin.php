@@ -80,6 +80,6 @@ class ThirtyFiveUpApiResourcePlugin extends AbstractPlugin implements ApiResourc
      */
     public function getResourceName(): string
     {
-        return ThirtyFiveUpApiConstants::RESOURCE_THIRTY_FIVE_UP_ORDER_API;
+        return ThirtyFiveUpApiConstants::RESOURCE_THIRTY_FIVE_UP_ORDERS_API;
     }
 }

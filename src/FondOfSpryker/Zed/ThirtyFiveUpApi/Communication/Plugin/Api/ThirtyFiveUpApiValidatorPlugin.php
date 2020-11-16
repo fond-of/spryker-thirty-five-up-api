@@ -18,7 +18,7 @@ class ThirtyFiveUpApiValidatorPlugin extends AbstractPlugin implements ApiValida
      */
     public function getResourceName(): string
     {
-        return ThirtyFiveUpApiConstants::RESOURCE_THIRTY_FIVE_UP_ORDER_API;
+        return ThirtyFiveUpApiConstants::RESOURCE_THIRTY_FIVE_UP_ORDERS_API;
     }
 
     /**
