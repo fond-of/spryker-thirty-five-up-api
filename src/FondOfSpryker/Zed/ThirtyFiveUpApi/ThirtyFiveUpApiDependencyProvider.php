@@ -100,7 +100,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
     protected function addThirtyFiveUpOrderQuery(Container $container): Container
     {
         $self = $this;
-        $container[static::QUERY_THIRTY_FIVE_UP_ORDER] = static function () use($self): ThirtyFiveUpOrderQuery {
+        $container[static::QUERY_THIRTY_FIVE_UP_ORDER] = static function () use ($self): ThirtyFiveUpOrderQuery {
             return $self->createThirtyFiveUpOrderQuery();
         };
 

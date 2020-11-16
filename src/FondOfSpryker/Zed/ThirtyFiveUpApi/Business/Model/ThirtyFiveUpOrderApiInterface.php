@@ -7,7 +7,7 @@ use Generated\Shared\Transfer\ApiDataTransfer;
 use Generated\Shared\Transfer\ApiItemTransfer;
 use Generated\Shared\Transfer\ApiRequestTransfer;
 
-interface ThirtyFiveUpApiInterface
+interface ThirtyFiveUpOrderApiInterface
 {
     /**
      * @param int $idThirtyFiveUpOrder

@@ -2,8 +2,8 @@
 
 namespace FondOfSpryker\Zed\ThirtyFiveUpApi\Business;
 
-use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpApi;
-use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpApiInterface;
+use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpOrderApi;
+use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpOrderApiInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\Validator\ThirtyFiveUpApiValidator;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\Validator\ThirtyFiveUpApiValidatorInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\Facade\ThirtyFiveUpApiToThirtyFiveUpFacadeInterface;
@@ -17,11 +17,11 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class ThirtyFiveUpApiBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpApiInterface
+     * @return \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\Model\ThirtyFiveUpOrderApiInterface
      */
-    public function createThirtyFiveUpApi(): ThirtyFiveUpApiInterface
+    public function createThirtyFiveUpApi(): ThirtyFiveUpOrderApiInterface
     {
-        return new ThirtyFiveUpApi(
+        return new ThirtyFiveUpOrderApi(
             $this->getApiQueryContainer(),
             $this->getThirtyFiveUpFacade(),
             $this->getRepository()

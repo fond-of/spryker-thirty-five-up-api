@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\ThirtyFiveUpOrderTransfer;
 use Spryker\Zed\Api\ApiConfig;
 use Spryker\Zed\Api\Business\Exception\EntityNotSavedException;
 
-class ThirtyFiveUpApi implements ThirtyFiveUpApiInterface
+class ThirtyFiveUpOrderApi implements ThirtyFiveUpOrderApiInterface
 {
     /**
      * @var \FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface
