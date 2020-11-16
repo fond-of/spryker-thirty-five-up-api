@@ -112,7 +112,7 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
     protected function getOrderQuery(): ThirtyFiveUpOrderQuery
     {
         if ($this->orderQuery === null) {
-            $this->orderQuery = $this->getFactory()->createThirtyFiveUpOrderQuery();
+            $this->orderQuery = $this->getFactory()->getThirtyFiveUpOrderQuery();
         }
 
         return $this->orderQuery;

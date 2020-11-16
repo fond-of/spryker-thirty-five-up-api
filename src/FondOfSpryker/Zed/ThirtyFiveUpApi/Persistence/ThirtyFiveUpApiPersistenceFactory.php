@@ -12,25 +12,24 @@ use Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
- * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\ThirtyFiveUpApiConfig getConfig()
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface getRepository()
  */
 class ThirtyFiveUpApiPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery
-     */
-    public function createThirtyFiveUpOrderQuery(): ThirtyFiveUpOrderQuery
-    {
-        return ThirtyFiveUpOrderQuery::create();
-    }
-
     /**
      * @return \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\Propel\Mapper\TransferMapperInterface]
      */
     public function createTransferMapper(): TransferMapperInterface
     {
         return new TransferMapper();
+    }
+
+    /**
+     * @return \Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery
+     */
+    public function getThirtyFiveUpOrderQuery(): ThirtyFiveUpOrderQuery
+    {
+        return $this->getProvidedDependency(ThirtyFiveUpApiDependencyProvider::QUERY_THIRTY_FIVE_UP_ORDER);
     }
 
     /**

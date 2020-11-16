@@ -15,7 +15,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 /**
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\ThirtyFiveUpApiFacadeInterface getFacade()
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\ThirtyFiveUpApiBusinessFactory getFactory()
- * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\ThirtyFiveUpApiConfig getConfig()
  */
 class ThirtyFiveUpApiResourcePlugin extends AbstractPlugin implements ApiResourcePluginInterface
 {
@@ -55,13 +54,13 @@ class ThirtyFiveUpApiResourcePlugin extends AbstractPlugin implements ApiResourc
     }
 
     /**
-     * @param int $idStock
+     * @param int $idThirtyFiveUpOrder
      *
      * @throws \Spryker\Zed\Api\Business\Exception\ApiDispatchingException
      *
      * @return \Generated\Shared\Transfer\ApiItemTransfer
      */
-    public function remove($idStock): ApiItemTransfer
+    public function remove($idThirtyFiveUpOrder): ApiItemTransfer
     {
         throw new ApiDispatchingException('Remove method not implemented on core level', ApiConfig::HTTP_CODE_NOT_FOUND);
     }

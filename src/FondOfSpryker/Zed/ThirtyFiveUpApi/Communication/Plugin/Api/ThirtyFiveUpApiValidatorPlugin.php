@@ -10,7 +10,6 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 /**
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\ThirtyFiveUpApiFacadeInterface getFacade()
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Business\ThirtyFiveUpApiBusinessFactory getFactory()
- * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\ThirtyFiveUpApiConfig getConfig()
  */
 class ThirtyFiveUpApiValidatorPlugin extends AbstractPlugin implements ApiValidatorPluginInterface
 {

@@ -14,9 +14,7 @@ class TransferMapper implements TransferMapperInterface
     public function toTransfer(array $data): FosThirtyFiveUpOrderEntityTransfer
     {
         $thirtyFiveUpOrderTransfer = new FosThirtyFiveUpOrderEntityTransfer();
-        $thirtyFiveUpOrderTransfer->fromArray($data, true);
-
-        return $thirtyFiveUpOrderTransfer;
+        return $thirtyFiveUpOrderTransfer->fromArray($data, true);
     }
 
     /**

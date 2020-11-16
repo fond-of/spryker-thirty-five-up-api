@@ -8,6 +8,7 @@ use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiT
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryBuilderContainerInterface;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerBridge;
 use FondOfSpryker\Zed\ThirtyFiveUpApi\Dependency\QueryContainer\ThirtyFiveUpApiToApiQueryContainerInterface;
+use Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -16,6 +17,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
     public const QUERY_CONTAINER_API = '35UP:QUERY_CONTAINER_API';
     public const QUERY_BUILDER_CONTAINER_API = '35UP:QUERY_BUILDER_CONTAINER_API';
     public const FACADE_THIRTY_FIVE_UP = '35UP:FACADE_THIRTY_FIVE_UP';
+    public const QUERY_THIRTY_FIVE_UP_ORDER = '35UP:QUERY_THIRTY_FIVE_UP_ORDER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -43,6 +45,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
         $container = $this->addApiQueryBuilderContainer($container);
         $container = $this->addApiQueryContainer($container);
         $container = $this->addThirtyFiveUpFacade($container);
+        $container = $this->addThirtyFiveUpOrderQuery($container);
 
         return $container;
     }
@@ -54,7 +57,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addApiQueryContainer(Container $container): Container
     {
-        $container[static::QUERY_CONTAINER_API] = function (Container $container): ThirtyFiveUpApiToApiQueryContainerInterface {
+        $container[static::QUERY_CONTAINER_API] = static function (Container $container): ThirtyFiveUpApiToApiQueryContainerInterface {
             return new ThirtyFiveUpApiToApiQueryContainerBridge($container->getLocator()->api()->queryContainer());
         };
 
@@ -68,7 +71,7 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addApiQueryBuilderContainer(Container $container): Container
     {
-        $container[static::QUERY_BUILDER_CONTAINER_API] = function (Container $container): ThirtyFiveUpApiToApiQueryBuilderContainerInterface {
+        $container[static::QUERY_BUILDER_CONTAINER_API] = static function (Container $container): ThirtyFiveUpApiToApiQueryBuilderContainerInterface {
             return new ThirtyFiveUpApiToApiQueryBuilderContainerBridge($container->getLocator()->apiQueryBuilder()->queryContainer());
         };
 
@@ -82,10 +85,33 @@ class ThirtyFiveUpApiDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addThirtyFiveUpFacade(Container $container): Container
     {
-        $container[static::FACADE_THIRTY_FIVE_UP] = function (Container $container): ThirtyFiveUpApiToThirtyFiveUpFacadeInterface {
+        $container[static::FACADE_THIRTY_FIVE_UP] = static function (Container $container): ThirtyFiveUpApiToThirtyFiveUpFacadeInterface {
             return new ThirtyFiveUpApiToThirtyFiveUpFacadeBridge($container->getLocator()->thirtyFiveUp()->facade());
         };
 
         return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addThirtyFiveUpOrderQuery(Container $container): Container
+    {
+        $self = $this;
+        $container[static::QUERY_THIRTY_FIVE_UP_ORDER] = static function () use($self): ThirtyFiveUpOrderQuery {
+            return $self->createThirtyFiveUpOrderQuery();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @return \Orm\Zed\ThirtyFiveUp\Persistence\ThirtyFiveUpOrderQuery
+     */
+    protected function createThirtyFiveUpOrderQuery(): ThirtyFiveUpOrderQuery
+    {
+        return ThirtyFiveUpOrderQuery::create();
     }
 }

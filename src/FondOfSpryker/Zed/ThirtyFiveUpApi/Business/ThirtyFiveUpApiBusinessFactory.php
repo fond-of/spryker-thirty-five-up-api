@@ -12,7 +12,6 @@ use FondOfSpryker\Zed\ThirtyFiveUpApi\ThirtyFiveUpApiDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
- * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\ThirtyFiveUpApiConfig getConfig()
  * @method \FondOfSpryker\Zed\ThirtyFiveUpApi\Persistence\ThirtyFiveUpApiRepositoryInterface getRepository()()
  */
 class ThirtyFiveUpApiBusinessFactory extends AbstractBusinessFactory
