@@ -69,7 +69,7 @@ class ThirtyFiveUpApiRepository extends AbstractRepository implements ThirtyFive
         $orderTransfer = $this->getFactory()->getThirtyFiveUpFacade()->findThirtyFiveUpOrderById($orderEntityTransfer->getIdThirtyFiveUpOrder());
 
         if ($orderTransfer === null) {
-            throw new ThirtyFiveUpOrderNotFoundException(sprintf('Order with ID %s not found!'), $orderEntityTransfer->getIdThirtyFiveUpOrder());
+            throw new ThirtyFiveUpOrderNotFoundException(sprintf('Order with ID %s not found!', $orderEntityTransfer->getIdThirtyFiveUpOrder()));
         }
 
         return $this->getFactory()->getQueryContainer()->createApiItem($orderTransfer, $orderTransfer->getId());
